@@ -37,6 +37,23 @@ pub fn sublist<T: PartialEq>(_first_list: &[T], _second_list: &[T]) -> Compariso
                 }
             }
         }
+    } else {
+        let diff = _first_list.len() - _second_list.len();
+
+        for n in 0..diff + 1 {
+            if (_second_list[0] == _first_list[n]) {
+                let mut i = 0;
+                while i < _second_list.len() {
+                    if _second_list[i] != _first_list[n + i] {
+                        break;
+                    }
+                    i += 1;
+                }
+                if i == _second_list.len() {
+                    return Comparison::Superlist;
+                }
+            }
+        }
     }
     return Comparison::Unequal;
 }
