@@ -26,7 +26,6 @@ fn test_1_is_not_2() {
 }
 
 #[test]
-#[ignore]
 fn test_compare_larger_equal_lists() {
     use std::iter::repeat;
 
@@ -36,25 +35,22 @@ fn test_compare_larger_equal_lists() {
 }
 
 #[test]
-#[ignore]
 fn test_sublist_at_start() {
     assert_eq!(Comparison::Sublist, sublist(&[1, 2, 3], &[1, 2, 3, 4, 5]));
 }
 
 #[test]
-#[ignore]
 fn sublist_in_middle() {
     assert_eq!(Comparison::Sublist, sublist(&[4, 3, 2], &[5, 4, 3, 2, 1]));
 }
 
 #[test]
-#[ignore]
 fn sublist_at_end() {
     assert_eq!(Comparison::Sublist, sublist(&[3, 4, 5], &[1, 2, 3, 4, 5]));
 }
 
 #[test]
-#[ignore]
+
 fn partially_matching_sublist_at_start() {
     assert_eq!(Comparison::Sublist, sublist(&[1, 1, 2], &[1, 1, 1, 2]));
 }
