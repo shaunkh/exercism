@@ -13,10 +13,21 @@ impl Clock {
                 hours: (hours + minutes / 60).rem_euclid(24),
                 minutes: minutes.rem_euclid(60),
             }
+        } else if minutes < 0 {
+            if (minutes % 60) == 0 {
+                return Clock {
+                    hours: (hours + minutes / 60).rem_euclid(24),
+                    minutes: minutes.rem_euclid(60),
+                };
+            }
+            Clock {
+                hours: (hours + minutes / 60 - 1).rem_euclid(24),
+                minutes: minutes.rem_euclid(60),
+            }
         } else {
             Clock {
                 hours: hours.rem_euclid(24),
-                minutes,
+                minutes: minutes.rem_euclid(60),
             }
         }
     }
@@ -27,9 +38,23 @@ impl Clock {
                 hours: (self.hours + (&self.minutes + minutes) / 60).rem_euclid(24),
                 minutes: (&self.minutes + minutes).rem_euclid(60),
             }
-        } else if &self.minutes + minutes < 0 {
+        } else if minutes < 0 {
+            if &self.minutes + minutes >= 0 {
+                return Clock {
+                    hours: (self.hours + (&self.minutes + minutes) / 60).rem_euclid(24),
+                    minutes: &self.minutes + minutes,
+                };
+            }
+
+            if ((&self.minutes + minutes) / 60) < 1 {
+                return Clock {
+                    hours: (self.hours + ((&self.minutes + minutes) / 60) - 1).rem_euclid(24),
+                    minutes: (&self.minutes + minutes).rem_euclid(60),
+                };
+            }
+
             Clock {
-                hours: (self.hours + (&self.minutes + minutes) / 60).rem_euclid(24),
+                hours: (self.hours + ((&self.minutes + minutes) / 60)).rem_euclid(24),
                 minutes: (&self.minutes + minutes).rem_euclid(60),
             }
         } else {
