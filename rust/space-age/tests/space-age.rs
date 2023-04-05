@@ -15,14 +15,12 @@ fn earth_age() {
 }
 
 #[test]
-#[ignore]
 fn mercury_age() {
     let duration = Duration::from(2_134_835_688);
     assert_in_delta(280.88, Mercury::years_during(&duration));
 }
 
 #[test]
-#[ignore]
 fn venus_age() {
     let duration = Duration::from(189_839_836);
     assert_in_delta(9.78, Venus::years_during(&duration));
