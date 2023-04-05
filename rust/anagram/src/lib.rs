@@ -1,7 +1,12 @@
 use std::collections::HashSet;
 
 pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&str]) -> HashSet<&'a str> {
-    unimplemented!(
-        "For the '{word}' word find anagrams among the following words: {possible_anagrams:?}"
-    );
+    let result: HashSet<&str> = HashSet::new();
+    for n in 0..possible_anagrams.len() {
+        if word != possible_anagrams[n] {
+            break;
+        }
+        println!("{}: {}", n, possible_anagrams[n])
+    }
+    result
 }
